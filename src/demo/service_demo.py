@@ -10,7 +10,7 @@ def main() -> None:
     print("Welcome to the demo!")
     user_name = input("What is your full name? ")
     account_details, _ = get_user_info(user_name)
-    print(account_details)
+
     while (True):
         user_response = input("What would you like to know about your account? ")
         conversation_history = ""
