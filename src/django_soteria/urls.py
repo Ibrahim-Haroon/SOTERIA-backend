@@ -15,8 +15,24 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.http import HttpResponse
+from django.urls import path, include
+
+
+def root_view(
+        request
+) -> HttpResponse:  # pragma: no cover
+    """
+    @rtype: HttpResponse
+    @param request: request object
+    @return: response for root view
+    """
+    return HttpResponse("Hello! You're at the root of the SOTERIA server.")
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', root_view, name='root'),
+    path('chat_endpoint/', include('src.chat_endpoint.urls')),
+    path('chat_stream/', include('src.chat_stream.urls')),
 ]
