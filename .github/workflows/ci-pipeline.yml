@@ -65,15 +65,6 @@ jobs:
 
       - name: Test with Django
         run: python -m coverage run --branch --source=src manage.py test
-
-      - name: Test with pytest
-        run: python -m coverage run --branch --append --source=src -m pytest
-
-      - name: Generate coverage report
-        run: coverage report -m > coverage_report.txt
-
-      - name: Upload coverage report as artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: coverage-report
-          path: coverage_report.txt
+      # Currently no tests to run
+#      - name: Test with pytest
+#        run: python -m coverage run --branch --append --source=src -m pytest
