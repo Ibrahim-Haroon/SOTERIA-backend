@@ -62,8 +62,8 @@ def conv_ai(
             {
                 "role": "user",
                 "content": f"{PROMPT}\n"
-                           f"transcription: {user_request}"
-                           f" + order details: {user_account_details}"
+                           f"user_request: {user_request}"
+                           f" + account_details: {user_account_details}"
             }
         ],
         stream=False
