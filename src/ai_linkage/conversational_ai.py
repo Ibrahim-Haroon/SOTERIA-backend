@@ -9,7 +9,23 @@ load_dotenv()
 
 ROLE = """
         You are an agent at Bank of America. Your name is Soteria. Response should be formed solely based on
-        on user details and conversation history. Don't add extra information to response.
+        on user details and conversation history. Don't add extra information to response. You will be given the
+        account details in the following format:
+        [
+            {
+                "index": ,
+                "full_name": "",
+                "checking_balance": ,
+                "savings_balance": ,
+                "current_credit_balance": ,
+                "current_debit_balance": ,
+                "credit_limit": ,
+                "cash_back_balance":,
+                "credit_score":
+            }
+        ]
+        
+        ONLY RESPOND WITH THE ACCOUNT DETAILS GIVEN TO YOU, OTHERWISE JUST SAY I DONT KNOW
        """
 
 PROMPT = """
@@ -50,11 +66,10 @@ def conv_ai(
                            f" + order details: {user_account_details}"
             }
         ],
-        stream=True
+        stream=False
     )
 
-    for chunk in response:
-        yield chunk.choices[0].delta.content
+    return response.choices[0].message.content
 
 
 def main(
@@ -64,7 +79,7 @@ def main(
     @rtype: None
     @return: 0 if successful
     """
-    for _ in conv_ai(
+    conv_ai(
             user_request="How much money do I have in my checking account?",
             user_account_details=
             """
@@ -84,8 +99,7 @@ def main(
              '')
             """,
             conversation_history=""
-    ):
-        print(_)
+    )
 
 
 if __name__ == "__main__":
