@@ -1,3 +1,10 @@
-from django.shortcuts import render
+from django.http import StreamingHttpResponse
+from rest_framework.views import APIView
 
-# Create your views here.
+
+class ChatStreamView(APIView):
+    def get(self, request):
+        return StreamingHttpResponse("Hello, world!", content_type="text/plain")
+
+
+
