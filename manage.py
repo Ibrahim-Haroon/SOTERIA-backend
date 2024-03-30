@@ -3,7 +3,7 @@
 import os
 import sys
 
-
+"main function"
 def main():
     """Run administrative tasks."""
     os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'src.django_soteria.settings')
