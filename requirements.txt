@@ -9,3 +9,5 @@ boto3==1.34.8
 botocore==1.34.8
 psycopg2-binary==2.9.9
 tqdm==4.66.1
+pytest==7.4.3
+pytest-mock==3.12.0
